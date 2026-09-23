@@ -14,26 +14,22 @@
 // ☐ No app.js, importar readline-sync e o módulo com require().
 // ☐ Solicitar nome do cliente, valor dos materiais e horas de serviço.
 // ☐ Exibir relatório com cliente, materiais, mão de obra, total e situação do desconto.
-const entrada = require("readline-sync");
+const entrada = require('readline-sync');
 
-const {
-    calcularMaoDeObra,
-    calcularTotal,
-    verificarGarantia
-} = require("./funcoesManutencao");
+const orcamento = require('./funcoesOrcamento');
 
-const maquina = entrada.question("Nome da máquina: ");
-const valorPecas = entrada.questionFloat("Valor das peças: R$ ");
-const horas = entrada.questionFloat("Horas de serviço: ");
-const meses = entrada.questionInt("Meses desde a última manutenção: ");
+const maquina = entrada.question(`Maquina: `);
+const valorpecas = entrada.questionFloat(`Valor de Pecas: `);
+const horas = entrada.questionFloat(`Horas de servicos: `);
+const meses = entrada.questionInt(`Meses desde do ultimo orcamento: `);
 
-const maoDeObra = calcularMaoDeObra(horas);
-const total = calcularTotal(valorPecas, horas);
-const garantia = verificarGarantia(meses);
+const maoDeObra = manutencao.calcularMaoDeObra(horas);
+const total = manutencao.calcularTotal (valorpecas, horas);
+const desconto = manutencao.verificarDesconto(meses);
 
-console.log("\n=== RELATÓRIO DE MANUTENÇÃO ===");
-console.log(`Máquina: ${maquina}`);
-console.log(`Mão de obra: R$ ${maoDeObra.toFixed(2)}`);
-console.log(`Peças: R$ ${valorPecas.toFixed(2)}`);
+console.log(`  Relatorio de Manutencao  `)
+console.log(`Maquina: ${maquina}`);
+console.log(`Pecas: R$ ${valorpecas.toFixed(2)}`);
+console.log(`Mao de Obra: R$ ${maoDeObra.toFixed(2)}`);
 console.log(`Total: R$ ${total.toFixed(2)}`);
-console.log(`Garantia: ${garantia}`);
+console.log(`Desconto: ${desconto}`);

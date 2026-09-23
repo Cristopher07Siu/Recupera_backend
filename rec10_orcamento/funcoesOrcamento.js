@@ -1,15 +1,16 @@
-function orcamento(horas) {
-    return horas * 80;
+function calcularMaoDeObra(horas) {
+    return horas * 95;
 }
 
-function calcularTotal(valorPecas, horas) {
-    const maoDeObra = orcamento(horas);
-    return valorPecas + maoDeObra;
+function calcularTotal(valorMateriais, horas) {
+    const maoDeObra = calcularMaoDeObra(horas);
+
+    return valorMateriais + maoDeObra;
 }
 
-function verificarGarantia(meses) {
-    if (meses <= 6) {
-        return "DESCONTO";
+function verificarDesconto(total) {
+    if (total >= 1000) {
+        return "DESCONTO DE 10%";
     } else {
         return "SEM DESCONTO";
     }
@@ -18,5 +19,5 @@ function verificarGarantia(meses) {
 module.exports = {
     calcularMaoDeObra,
     calcularTotal,
-    verificarGarantia
+    verificarDesconto
 };
